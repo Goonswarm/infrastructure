@@ -1,0 +1,25 @@
+dn: dc=tendollarbond,dc=com
+dc: tendollarbond
+o: OHGOD LDAP server
+description: Root entry for tendollarbond.com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+
+dn: ou=users,dc=tendollarbond,dc=com
+ou: users
+description: All users in OHGOD
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=groups,dc=tendollarbond,dc=com
+ou: users
+description: All groups in OHGOD
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=corporations,dc=tendollarbond,dc=com
+ou: users
+description: All corporations in OHGOD
+objectClass: top
+objectClass: organizationalUnit

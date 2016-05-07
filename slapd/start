@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+# Ensure permissions are correct on our DB folder
+# This is necessary when data volumes are first mounted
+chown -R ldap:ldap /var/lib/openldap/openldap-data
+
+# start slapd
+# Log level options are:
+# 64 (config) + 256 (LDAP ops) +
+slapd -d320 -u ldap -g ldap -h 'ldap://'
