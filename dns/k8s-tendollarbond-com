@@ -13,4 +13,4 @@ nginx.svc 300 IN A 104.196.134.49
 ;; Public facing stuff
 admin 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
 auth 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
-forums 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
+forum 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
