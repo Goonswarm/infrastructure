@@ -1,0 +1,10 @@
+#!/bin/sh
+set -ue
+
+# Imports a zone file into a Google Cloud DNS zone of the same name
+readonly ZONE="${1}"
+
+gcloud dns record-sets import "${ZONE}" \
+       --zone-file-format \
+       --delete-all-existing \
+       --zone "${ZONE}"

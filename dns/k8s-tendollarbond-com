@@ -1,0 +1,15 @@
+;; Zone NS records (do not change these!)
+k8s.tendollarbond.com. 21600 IN NS ns-cloud-d1.googledomains.com.
+k8s.tendollarbond.com. 21600 IN NS ns-cloud-d2.googledomains.com.
+k8s.tendollarbond.com. 21600 IN NS ns-cloud-d3.googledomains.com.
+k8s.tendollarbond.com. 21600 IN NS ns-cloud-d4.googledomains.com.
+
+;; SOA record (do not change this either!)
+k8s.tendollarbond.com. 21600 IN SOA ns-cloud-d1.googledomains.com. cloud-dns-hostmaster.google.com. 11 21600 3600 1209600 300
+
+;; Services that other subdomains are delegated to
+nginx.svc 300 IN A 104.196.134.49
+
+;; Public facing stuff
+auth 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
+forums 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
