@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: forum
+  labels:
+    app: forum
+    spec: v1
+spec:
+  replicas: 1
+  selector:
+    app: goon-forum
+    spec: v1
+  template:
+    metadata:
+      labels:
+        app: goon-forum
+        spec: v1
+    spec:
+      containers:
+        - image: mariadb:10.1.13
+          imagePullPolicy: Always
+          name: mariadb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mariadb-storage
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: forum-conf
+                  key: mariadb.password
+      volumes:
+        - name: mariadb-storage
+          gcePersistentDisk:
+            pdName: mariadb-storage
+            fsType: ext4
