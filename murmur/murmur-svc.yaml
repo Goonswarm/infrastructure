@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: murmur
+  labels:
+    app: murmur
+spec:
+  selector:
+    app: murmur
+  ports:
+    - port: 64738
+      name: murmur

@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: murmur
+  labels:
+    app: murmur
+    spec: v2
+spec:
+  replicas: 1
+  selector:
+    app: murmur
+    spec: v2
+  template:
+    metadata:
+      labels:
+        app: murmur
+        spec: v2
+    spec:
+      containers:
+        - image: gcr.io/goonswarm-1303/murmur
+          imagePullPolicy: Always
+          name: murmur
+          volumeMounts:
+            - name: murmur-certs
+              mountPath: /etc/murmur/tls
+          ports:
+            - containerPort: 64738
+        - image: gcr.io/goonswarm-1303/murmur
+          name: murmur-ldap
+          command:
+            - /opt/mumble-ldap/LDAPauth.py
+      volumes:
+        - name: murmur-certs
+          secret:
+            secretName: mumble-k8s-tendollarbond-com-tls

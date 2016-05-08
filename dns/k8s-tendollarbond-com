@@ -15,3 +15,4 @@ k8s.svc 300 IN A 104.196.136.101
 admin 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
 auth 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
 forums 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
+mumble 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
