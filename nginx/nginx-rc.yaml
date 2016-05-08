@@ -51,7 +51,7 @@ spec:
           secret:
             secretName: nginx-dhparam
         - name: nginx-config
-          secret:
-            secretName: nginx-config
+          configMap:
+            name: nginx-config
         - name: nginx-logs
           emptyDir: {}
