@@ -5,17 +5,17 @@ metadata:
   name: forum
   labels:
     app: forum
-    spec: v1
+    spec: v2
 spec:
   replicas: 1
   selector:
     app: goon-forum
-    spec: v1
+    spec: v2
   template:
     metadata:
       labels:
         app: goon-forum
-        spec: v1
+        spec: v2
     spec:
       containers:
         - image: mariadb:10.1.13
@@ -32,8 +32,20 @@ spec:
                 configMapKeyRef:
                   name: forum-conf
                   key: mariadb.password
+        - image: gcr.io/goonswarm-1303/phpbb3
+          imagePullPolicy: Always
+          name: phpbb3
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: phpbb-storage
+              mountPath: /var/www/html
       volumes:
         - name: mariadb-storage
           gcePersistentDisk:
             pdName: mariadb-storage
+            fsType: ext4
+        - name: phpbb-storage
+          gcePersistentDisk:
+            pdName: phpbb-storage
             fsType: ext4

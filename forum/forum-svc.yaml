@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forum
+  labels:
+    app: forum
+spec:
+  selector:
+    app: goon-forum
+  ports:
+    - port: 80
+      name: http
