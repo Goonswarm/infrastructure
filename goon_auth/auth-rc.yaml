@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: goon-auth
+  labels:
+    app: goon-auth
+    spec: v2
+spec:
+  replicas: 1
+  selector:
+    app: goon-auth
+    spec: v2
+  template:
+    metadata:
+      labels:
+        app: goon-auth
+        spec: v2
+    spec:
+      containers:
+        - image: gcr.io/goonswarm-1303/goon-auth
+          imagePullPolicy: Always
+          name: goon-auth
+          ports:
+            - containerPort: 4000
+          volumeMounts:
+            - name: goon-auth-secret
+              mountPath: /etc/goon_auth
+      volumes:
+        - name: goon-auth-secret
+          secret:
+            secretName: goon-auth-secret
