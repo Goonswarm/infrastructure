@@ -5,7 +5,7 @@ k8s.tendollarbond.com. 21600 IN NS ns-cloud-d3.googledomains.com.
 k8s.tendollarbond.com. 21600 IN NS ns-cloud-d4.googledomains.com.
 
 ;; SOA record (do not change this either!)
-k8s.tendollarbond.com. 21600 IN SOA ns-cloud-d1.googledomains.com. cloud-dns-hostmaster.google.com. 11 21600 3600 1209600 300
+k8s.tendollarbond.com. 21601 IN SOA ns-cloud-d1.googledomains.com. cloud-dns-hostmaster.google.com. 11 21600 3600 1209600 300
 
 ;; Services and internal things
 nginx.svc 300 IN A 104.196.134.49
@@ -18,6 +18,6 @@ forums 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
 mumble 300 IN CNAME nginx.svc.k8s.tendollarbond.com.
 
 ;; Mailgun verification
-k8s.tendollarbond.com 3600 IN TXT "v=spf1 include:mailgun.org ~all"
+k8s.tendollarbond.com. 3600 IN TXT "v=spf1 include:mailgun.org ~all"
 pic._domainkey 3600 IN TXT "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2WNOLVkenWDugi5NSVpc7sv/FeF/IwQXp1F3hrzGMfyVl3s/x+R+7HkLIzQNRAm0irXai47ElzLs259wZMNrr+AYiO44Rt5R9+2aVbr2B5xSYwnmmzeDAR8q5ZsUgIevJjoXJnAfDUt8SuYacjXISa1iSLsSVhKf6bpT6JfJvPQIDAQAB"
 email 3600 IN CNAME mailgun.org.
