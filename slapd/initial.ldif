@@ -18,8 +18,16 @@ description: All groups in OHGOD
 objectClass: top
 objectClass: organizationalUnit
 
-dn: ou=corporations,dc=tendollarbond,dc=com
-ou: users
+dn: cn=ejabberd,ou=users,dc=tendollarbond,dc=com
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: ejabberd
+sn: ejabberd
+title: Lookup account for ejabberd
+userPassword: {SSHA}ttUCatTkhH30ne1vwJmW5KGLdU84DG3m
+
+dn: ou=corporations,ou=groups,dc=tendollarbond,dc=com
+ou: corporations
 description: All corporations in OHGOD
 objectClass: top
 objectClass: organizationalUnit

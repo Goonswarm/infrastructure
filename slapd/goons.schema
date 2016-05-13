@@ -25,9 +25,15 @@ attributetype ( 2.25.27280129947070620039042969440481559835.1.7
   EQUALITY distinguishedNameMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 )
 
+attributetype ( 2.25.27280129947070620039042969440481559835.1.8
+  NAME 'pilotActive'
+  DESC 'Indicates whether this is an active account'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 )
+
 objectclass ( 2.25.27280129947070620039042969440481559835.2.2
   NAME 'goonPilot'
   DESC 'GoonSwarm member'
   AUXILIARY
-  MUST ( mail $ corporation $ refreshToken )
-  MAY ( somethingAwfulID $ vouchedBy ))
+  MUST ( mail $ refreshToken )
+  MAY ( somethingAwfulID $ vouchedBy $ corporation $ pilotActive ))
