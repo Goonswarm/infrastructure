@@ -24,6 +24,8 @@ spec:
           volumeMounts:
             - name: murmur-certs
               mountPath: /etc/murmur/tls
+            - name: murmur-storage
+              mountPath: /var/lib/mumble-server/
           ports:
             - containerPort: 64738
         - image: gcr.io/goonswarm-1303/murmur
@@ -34,3 +36,6 @@ spec:
         - name: murmur-certs
           secret:
             secretName: mumble-k8s-tendollarbond-com-tls
+        - name: murmur-storage
+          gcePersistentDisk:
+            pdName: murmur-storage
