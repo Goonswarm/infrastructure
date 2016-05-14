@@ -72,10 +72,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "localhost"
-  - "ejabberd"
-  - "chat.k8s.tendollarbond.com"
-  - "chat.tendollarbond.com"
+  - "k8s.tendollarbond.com"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -96,26 +93,23 @@ listen:
     port: 5222
     ip: "::"
     module: ejabberd_c2s
-    ##
-    ## If TLS is compiled in and you installed a SSL
-    ## certificate, specify the full path to the
-    ## file and uncomment this line:
-    ##
-    certfile: "/etc/ejabberd/ejabberd.pem"
+    certfile: "/etc/ssl/ejabberd/combined.pem"
     starttls: true
-    ##
-    ## Custom OpenSSL options
-    ##
     protocol_options:
       - "no_sslv3"
-    ##   - "no_tlsv1"
+      - "no_tlsv1"
     max_stanza_size: 65536
     shaper: c2s_shaper
     access: c2s
-  # -
-  #   port: 5269
-  #   ip: "::"
-  #   module: ejabberd_s2s_in
+  -
+    port: 5269
+    ip: "::"
+    module: ejabberd_s2s_in
+    certfile: "/etc/ssl/ejabberd/combined.pem"
+    starttls: true
+    protocol_options:
+      - "no_sslv3"
+      - "no_tlsv1"
   ##
   ## ejabberd_service: Interact with external components (transports, ...)
   ##
