@@ -9,3 +9,6 @@ update them.
 
 Make some changes to a zone and run `./import ${zone_file_name}`. The `gcloud`
 tool needs to be set up properly on your machine.
+
+Note that the tool will update the version in the SOA record, please commit this
+change after updating DNS.
