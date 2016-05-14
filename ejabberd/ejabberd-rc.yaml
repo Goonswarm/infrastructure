@@ -27,7 +27,7 @@ spec:
             - containerPort: 5280
               name: ejabberd-http
           volumeMounts:
-            - name: k8s-tendollarbond-com-tls
+            - name: tendollarbond-com-tls
               mountPath: /etc/ssl/ejabberd
             - name: ejabberd-config
               mountPath: /etc/ejabberd
@@ -35,6 +35,6 @@ spec:
         - name: ejabberd-config
           configMap:
             name: ejabberd-config
-        - name: k8s-tendollarbond-com-tls
+        - name: tendollarbond-com-tls
           secret:
-            secretName: k8s-tendollarbond-com-tls
+            secretName: tendollarbond-com-tls

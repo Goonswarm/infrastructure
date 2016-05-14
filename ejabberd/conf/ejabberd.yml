@@ -72,7 +72,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "k8s.tendollarbond.com"
+  - "tendollarbond.com"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -105,40 +105,6 @@ listen:
     port: 5269
     ip: "::"
     module: ejabberd_s2s_in
-    certfile: "/etc/ssl/ejabberd/combined.pem"
-    starttls: true
-    protocol_options:
-      - "no_sslv3"
-      - "no_tlsv1"
-  ##
-  ## ejabberd_service: Interact with external components (transports, ...)
-  ##
-  ## -
-  ##   port: 8888
-  ##   module: ejabberd_service
-  ##   access: all
-  ##   shaper_rule: fast
-  ##   ip: "127.0.0.1"
-  ##   hosts:
-  ##     "icq.example.org":
-  ##       password: "secret"
-  ##     "sms.example.org":
-  ##       password: "secret"
-
-  ##
-  ## ejabberd_stun: Handles STUN Binding requests
-  ##
-  ## -
-  ##   port: 3478
-  ##   transport: udp
-  ##   module: ejabberd_stun
-
-  ##
-  ## To handle XML-RPC requests that provide admin credentials:
-  ##
-  ## -
-  ##   port: 4560
-  ##   module: ejabberd_xmlrpc
   -
     port: 5280
     ip: "::"
@@ -150,6 +116,9 @@ listen:
     http_bind: true
     ## register: true
     captcha: true
+
+s2s_use_starttls: required
+s2s_certfile: "/etc/ssl/ejabberd/combined.pem"
 
 ###   ==============
 ###   AUTHENTICATION
