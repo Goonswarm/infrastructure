@@ -17,3 +17,7 @@ spec:
       name: https
     - port: 64738
       name: mumble
+    - port: 5222
+      name: xmpp-c2s
+    - port: 5269
+      name: xmpp-s2s
