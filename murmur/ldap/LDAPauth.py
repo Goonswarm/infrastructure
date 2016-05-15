@@ -469,7 +469,7 @@ def do_main_program():
             # Search for the user.
             res = ldap_conn.search_s(cfg.ldap.users_dn,
                                      ldap.SCOPE_ONELEVEL,
-                                     '(cn=%s)' % (name),
+                                     '(&(cn=%s)(pilotActive=TRUE))' % (name),
                                      [cfg.ldap.display_attr])
 
             if len(res) == 0:
