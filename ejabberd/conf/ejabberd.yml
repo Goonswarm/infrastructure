@@ -134,7 +134,7 @@ ldap_servers:
   - "goon-ldap"
 ldap_encrypt: none
 ldap_port: 389
-ldap_filter: "(objectClass=goonPilot)"
+ldap_filter: "(&(objectClass=goonPilot)(pilotActive=TRUE))"
 ldap_base: "ou=users,dc=tendollarbond,dc=com"
 ldap_uids:
    - "sn": "%u"
