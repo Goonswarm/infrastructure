@@ -25,6 +25,8 @@ spec:
           volumeMounts:
             - name: k8s-tendollarbond-com-tls
               mountPath: /etc/nginx/ssl/k8s.tendollarbond.com
+            - name: tendollarbond-com-tls
+              mountPath: /etc/nginx/ssl/tendollarbond.com
             - name: nginx-dhparam
               mountPath: /etc/nginx/ssl/dhparam
             - name: nginx-config
@@ -47,6 +49,9 @@ spec:
         - name: k8s-tendollarbond-com-tls
           secret:
             secretName: k8s-tendollarbond-com-tls
+        - name: tendollarbond-com-tls
+          secret:
+            secretName: tendollarbond-com-tls
         - name: nginx-dhparam
           secret:
             secretName: nginx-dhparam
