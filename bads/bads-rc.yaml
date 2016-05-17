@@ -18,6 +18,12 @@ spec:
         spec: v1
     spec:
       containers:
-        - image: gcr.io/goonswarm-1303/bads
+        - image: gcr.io/goonswarm-1303/bads:332b258
           imagePullPolicy: Always
           name: bads
+          env:
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: bads-config
+                  key: mariadb.password
