@@ -21,3 +21,5 @@ spec:
       name: xmpp-c2s
     - port: 5269
       name: xmpp-s2s
+    - port: 5280
+      name: xmpp-http
