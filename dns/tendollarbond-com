@@ -5,7 +5,7 @@ tendollarbond.com. 21600 IN NS ns-cloud-a3.googledomains.com.
 tendollarbond.com. 21600 IN NS ns-cloud-a4.googledomains.com.
 
 ;; SOA record (do not change this either!)
-tendollarbond.com. 21615 IN SOA ns-cloud-a1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 1209600 300
+tendollarbond.com. 21618 IN SOA ns-cloud-a1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 1209600 300
 
 ;; Services that other subdomains are delegated to
 old 300 IN A 168.235.76.216
@@ -26,3 +26,8 @@ k8s 21600 NS ns-cloud-d4.googledomains.com.
 _xmpp-client._tcp 300 IN SRV 5 0 5222 conference.tendollarbond.com.
 _xmpp-server._tcp 300 IN SRV 5 0 5269 conference.tendollarbond.com.
 conference 300 IN A 104.196.134.49
+
+;; Mailgun verification
+tendollarbond.com. 3600 IN TXT "v=spf1 include:mailgun.org ~all"
+mx._domainkey 3600 IN TXT "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeXtkUi0cQ7DsTpNuxCrI+QaW0J2YttcLsJJnADCNm4DllckZnQ3Diq4y/WI/mSN+m4UuJvwv4DGTzT0qqZ/cmdliY5WJAKbuXoloT6KM7u/SiyA3YdQ2bEg16XrKzaZ6SAlpksoDEgVNmK4SAByBjCqMgImujXpoa9896hIio/QIDAQAB"
+email 3600 IN CNAME mailgun.org.
