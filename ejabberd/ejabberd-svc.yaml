@@ -6,6 +6,8 @@ metadata:
   labels:
     app: ejabberd
 spec:
+  type: LoadBalancer
+  loadBalancerIP: 104.196.141.30
   selector:
     app: ejabberd
   ports:
