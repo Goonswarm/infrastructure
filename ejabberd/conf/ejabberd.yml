@@ -117,7 +117,7 @@ listen:
     certfile: "/etc/ssl/ejabberd/combined.pem"
     request_handlers:
       "/websocket": ejabberd_http_ws
-    web_admin: false
+    web_admin: true
     http_poll: true
     http_bind: true
     captcha: true
@@ -183,7 +183,7 @@ acl:
   ##
   admin:
      user:
-         - "": "localhost"
+         - "vincent_claeson": "tendollarbond.com"
 
   ##
   ## Blocked users
@@ -274,7 +274,7 @@ access:
     local: allow
   ## All users are allowed to use the MUC service:
   muc:
-    all: allow
+    local: allow
   ## Only accounts on the local ejabberd server can create Pubsub nodes:
   pubsub_createnode:
     local: allow
