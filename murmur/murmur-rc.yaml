@@ -35,7 +35,7 @@ spec:
       volumes:
         - name: murmur-certs
           secret:
-            secretName: mumble-k8s-tendollarbond-com-tls
+            secretName: mumble-tendollarbond-com-tls
         - name: murmur-storage
           gcePersistentDisk:
             pdName: murmur-storage
