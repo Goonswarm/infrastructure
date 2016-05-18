@@ -6,6 +6,8 @@ metadata:
   labels:
     app: murmur
 spec:
+  type: LoadBalancer
+  loadBalancerIP: 104.196.1.43
   selector:
     app: murmur
   ports:
