@@ -18,4 +18,4 @@ RUN npm install
 
 ADD config.json /opt/kaiwa/dev_config.json
 
-CMD node server
+CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" dev_config.json && node server

@@ -24,5 +24,10 @@ spec:
           env:
             - name: NODE_ENV
               value: dev
+            - name: KAIWA_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: kaiwa-config
+                  key: secret
           ports:
             - containerPort: 8000

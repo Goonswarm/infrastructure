@@ -17,3 +17,6 @@ spec:
       name: xmpp-s2s
     - port: 5280
       name: xmpp-http
+    - port: 443
+      targetPort: 5280
+      name: xmpp-https
