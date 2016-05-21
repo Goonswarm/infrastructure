@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Vincent Ambo <tazjin@gmail.com>
 
-RUN apt-get update && apt-get install -y ejabberd erlang-eldap
+RUN apt-get update && apt-get install -y erlang-eldap ejabberd ejabberd-contrib
 
 EXPOSE 5222 5269 5280
 

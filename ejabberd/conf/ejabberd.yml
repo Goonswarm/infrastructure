@@ -121,6 +121,12 @@ listen:
     http_poll: true
     http_bind: true
     captcha: true
+  -
+    port: 5285
+    module: ejabberd_http
+    request_handlers:
+      "/api": mod_rest
+    web_admin: false
 
 s2s_use_starttls: required
 s2s_certfile: "/etc/ssl/ejabberd/combined.pem"
@@ -138,7 +144,8 @@ ldap_servers:
   - "goon-ldap"
 ldap_encrypt: none
 ldap_port: 389
-ldap_filter: "(&(objectClass=goonPilot)(pilotActive=TRUE))"
+# Allow service accounts (trumpbot) to connect
+ldap_filter: "(|(pilotActive=TRUE)(employeeType=service))"
 ldap_base: "ou=users,dc=tendollarbond,dc=com"
 ldap_uids:
    - "sn": "%u"
@@ -185,31 +192,15 @@ acl:
      user:
          - "vincent_claeson": "tendollarbond.com"
 
-  ##
-  ## Blocked users
-  ##
-  ## blocked:
-  ##   user:
-  ##     - "baduser": "example.org"
-  ##     - "test"
-
   ## Local users: don't modify this.
   ##
   local:
     user_regexp: ""
 
-  ##
-  ## More examples of ACLs
-  ##
-  ## jabberorg:
-  ##   server:
-  ##     - "jabber.org"
-  ## aleksey:
-  ##   user:
-  ##     - "aleksey": "jabber.ru"
-  ## test:
-  ##   user_regexp: "^test"
-  ##   user_glob: "test*"
+  ## Trumpbot (for pings)
+  trumpbot:
+    user:
+      - "trumpbot": "tendollarbond.com"
 
   ##
   ## Loopback network
@@ -217,24 +208,6 @@ acl:
   loopback:
     ip:
       - "127.0.0.0/8"
-
-  ##
-  ## Bad XMPP servers
-  ##
-  ## bad_servers:
-  ##   server:
-  ##     - "xmpp.zombie.org"
-  ##     - "xmpp.spam.com"
-
-##
-## Define specific ACLs in a virtual host.
-##
-## host_config:
-##   "localhost":
-##     acl:
-##       admin:
-##         user:
-##           - "bob-local": "localhost"
 
 ###   ============
 ###   ACCESS RULES
@@ -285,6 +258,8 @@ access:
   ## Only allow to register from localhost
   trusted_network:
     loopback: allow
+  restaccess:
+    trumpbot: allow
   ## Do not establish S2S connections with bad servers
   ## s2s:
   ##   bad_servers: deny
@@ -345,11 +320,14 @@ modules:
   ##   accesslog: "/var/log/ejabberd/access.log"
   mod_last: {}
   mod_muc:
-    ## host: "conference.@HOST@"
+    host: "conference.tendollarbond.com"
     access: muc
     access_create: muc_create
     access_persistent: muc_create
     access_admin: muc_admin
+    max_users: 250
+    # e.g. 10 channels on 4 devices
+    max_user_conferences: 40
   mod_mam:
     db_type: mnesia
     default: roster
@@ -376,6 +354,13 @@ modules:
       - "flat"
       - "hometree"
       - "pep" # pep requires mod_caps
+  mod_rest:
+    allowed_destinations: []
+    allowed_stanza_types: []
+    access_commands:
+      restaccess:
+        - connected_users
+        - send_message
   mod_roster: {}
   mod_shared_roster: {}
   mod_stats: {}
