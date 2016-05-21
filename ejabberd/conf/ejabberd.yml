@@ -123,10 +123,11 @@ listen:
     captcha: true
   -
     port: 5285
-    module: ejabberd_http
-    request_handlers:
-      "/api": mod_rest
-    web_admin: false
+    module: ejabberd_xmlrpc
+    access_commands:
+      rpcaccess:
+        - connected_users
+        - send_message
 
 s2s_use_starttls: required
 s2s_certfile: "/etc/ssl/ejabberd/combined.pem"
@@ -258,7 +259,8 @@ access:
   ## Only allow to register from localhost
   trusted_network:
     loopback: allow
-  restaccess:
+  rpcaccess:
+    admin: allow
     trumpbot: allow
   ## Do not establish S2S connections with bad servers
   ## s2s:
@@ -354,13 +356,6 @@ modules:
       - "flat"
       - "hometree"
       - "pep" # pep requires mod_caps
-  mod_rest:
-    allowed_destinations: []
-    allowed_stanza_types: []
-    access_commands:
-      restaccess:
-        - connected_users
-        - send_message
   mod_roster: {}
   mod_shared_roster: {}
   mod_stats: {}
