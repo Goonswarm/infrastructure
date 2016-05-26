@@ -13,3 +13,7 @@ spec:
   ports:
     - port: 64738
       name: murmur
+      protocol: TCP
+    - port: 64738
+      name: murmur
+      protocol: UDP
