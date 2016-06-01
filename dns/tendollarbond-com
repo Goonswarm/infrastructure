@@ -5,7 +5,7 @@ tendollarbond.com. 21600 IN NS ns-cloud-a3.googledomains.com.
 tendollarbond.com. 21600 IN NS ns-cloud-a4.googledomains.com.
 
 ;; SOA record (do not change this either!)
-tendollarbond.com. 21639 IN SOA ns-cloud-a1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 1209600 300
+tendollarbond.com. 21645 IN SOA ns-cloud-a1.googledomains.com. cloud-dns-hostmaster.google.com. 1 21600 3600 1209600 300
 
 ;; Services that other subdomains are delegated to
 nginx.svc 300 IN A 104.196.134.49
@@ -17,6 +17,7 @@ forums 300 IN CNAME nginx.svc.tendollarbond.com.
 www 300 IN CNAME nginx.svc.tendollarbond.com.
 chat 300 IN CNAME nginx.svc.tendollarbond.com.
 recon 300 IN CNAME nginx.svc.tendollarbond.com.
+rocket 300 IN CNAME nginx.svc.tendollarbond.com.
 mumble 300 IN A 104.196.1.43
 
 ;; Zone delegations
@@ -37,3 +38,7 @@ email 3600 IN CNAME mailgun.org.
 
 ;; Detectify verification
 tendollarbond.com. 3600 IN TXT "detectify-verification=a2e3ec4406754c155ed9d3ecb7d3b8ab"
+
+;; Google Cloud storage setup
+files 300 IN CNAME c.storage.googleapis.com.
+tendollarbond.com. 3600 IN TXT "google-site-verification=8lhzCoQ4u5QFID3q7zuXeqPX99-YcSeh1G7vnXeqg2Y"
