@@ -1,9 +1,0 @@
-#!/bin/bash
-set -ueo pipefail
-
-# Creates a Kubernetes configuration map from the nginx config folder
-# This can be mounted inside a pod like a volume.
-# The create command does not currently support declarative updates,
-# but fortunately we can simply pipe to kubectl apply.
-kubectl create configmap nginx-config --from-file conf --dry-run -o yaml |\
-    kubectl apply -f -

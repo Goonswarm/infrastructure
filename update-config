@@ -1,0 +1,9 @@
+#!/bin/bash
+set -ueo pipefail
+
+# Creates a Kubernetes configuration map from a configuration folder.
+# Specify the app name as the first parameter and the conf/ subfolder from
+# the corresponding folder will be used.
+# This can be mounted inside a pod like a volume.
+kubectl create configmap "${1}-config" --from-file "${1}/conf" --dry-run -o yaml |\
+    kubectl apply -f -
