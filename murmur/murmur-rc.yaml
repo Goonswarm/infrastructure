@@ -2,20 +2,20 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: murmur
+  name: murmur-v3
   labels:
     app: murmur
-    spec: v2
+    spec: v3
 spec:
   replicas: 1
   selector:
     app: murmur
-    spec: v2
+    spec: v3
   template:
     metadata:
       labels:
         app: murmur
-        spec: v2
+        spec: v3
     spec:
       containers:
         - image: gcr.io/goonswarm-1303/murmur
@@ -25,17 +25,25 @@ spec:
             - name: murmur-certs
               mountPath: /etc/murmur/tls
             - name: murmur-storage
-              mountPath: /var/lib/mumble-server/
+              mountPath: /var/lib/mumble-server
+            - name: murmur-config
+              mountPath: /etc/murmur
           ports:
             - containerPort: 64738
-        - image: gcr.io/goonswarm-1303/murmur
+        - image: gcr.io/goonswarm-1303/murmur-ldap
           name: murmur-ldap
           command:
-            - /opt/mumble-ldap/LDAPauth.py
+            - /etc/murmur/murmur-ldap.conf
+          volumeMounts:
+            - name: murmur-config
+              mountPath: /etc/murmur
       volumes:
         - name: murmur-certs
           secret:
             secretName: mumble-tendollarbond-com-tls
+        - name: murmur-config
+          configMap:
+            name: murmur-config
         - name: murmur-storage
           gcePersistentDisk:
             pdName: murmur-storage
