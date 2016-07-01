@@ -1,24 +1,17 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: goon-auth
-  labels:
-    app: goon-auth
-    spec: v2
 spec:
   replicas: 1
-  selector:
-    app: goon-auth
-    spec: v2
   template:
     metadata:
       labels:
         app: goon-auth
-        spec: v2
     spec:
       containers:
-        - image: gcr.io/goonswarm-1303/goon-auth
+        - image: gcr.io/goonswarm-1303/goon-auth:b8e3a4e
           imagePullPolicy: Always
           name: goon-auth
           ports:
