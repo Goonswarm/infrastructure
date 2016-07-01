@@ -1,23 +1,15 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: nginx
-  labels:
-    app: nginx
-    version: 1.9.12
-    spec: v4
 spec:
   replicas: 2
-  selector:
-    app: nginx
-    rcv: v4
   template:
     metadata:
       labels:
         app: nginx
         lb-target: nginx
-        rcv: v4
     spec:
       containers:
         - image: nginx:1.9.12
