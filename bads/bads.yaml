@@ -1,24 +1,17 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: bads
-  labels:
-    app: bads
-    spec: v1
 spec:
   replicas: 1
-  selector:
-    app: bads
-    spec: v1
   template:
     metadata:
       labels:
         app: bads
-        spec: v1
     spec:
       containers:
-        - image: gcr.io/goonswarm-1303/bads:332b258
+        - image: gcr.io/goonswarm-1303/bads:c1c0de5
           imagePullPolicy: Always
           name: bads
           env:

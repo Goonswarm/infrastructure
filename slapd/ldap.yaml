@@ -1,21 +1,14 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: goon-ldap
-  labels:
-    app: goon-ldap
-    spec: v1
+  name: bads
 spec:
   replicas: 1
-  selector:
-    app: goon-ldap
-    spec: v1
   template:
     metadata:
       labels:
         app: goon-ldap
-        spec: v1
     spec:
       containers:
         - image: gcr.io/goonswarm-1303/slapd
@@ -29,5 +22,5 @@ spec:
       volumes:
         - name: slapd-storage
           gcePersistentDisk:
-            pdName: slapd-storage
+            pdName: ldap-storage
             fsType: ext4
