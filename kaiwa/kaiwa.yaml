@@ -1,21 +1,14 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: kaiwa
-  labels:
-    app: kaiwa
-    spec: v1
 spec:
   replicas: 1
-  selector:
-    app: kaiwa
-    spec: v1
   template:
     metadata:
       labels:
         app: kaiwa
-        spec: v1
     spec:
       containers:
         - image: gcr.io/goonswarm-1303/kaiwa
