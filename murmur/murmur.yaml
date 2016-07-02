@@ -1,21 +1,14 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: murmur-v3
-  labels:
-    app: murmur
-    spec: v3
+  name: murmur
 spec:
   replicas: 1
-  selector:
-    app: murmur
-    spec: v3
   template:
     metadata:
       labels:
         app: murmur
-        spec: v3
     spec:
       containers:
         - image: gcr.io/goonswarm-1303/murmur
@@ -32,7 +25,7 @@ spec:
             - containerPort: 64738
         - image: gcr.io/goonswarm-1303/murmur-ldap
           name: murmur-ldap
-          command:
+          args:
             - /etc/murmur/murmur-ldap.conf
           volumeMounts:
             - name: murmur-config
