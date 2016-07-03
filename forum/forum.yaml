@@ -1,21 +1,14 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: forum
-  labels:
-    app: forum
-    spec: v2
 spec:
   replicas: 1
-  selector:
-    app: goon-forum
-    spec: v2
   template:
     metadata:
       labels:
         app: goon-forum
-        spec: v2
     spec:
       containers:
         - image: mariadb:10.1.13
@@ -32,6 +25,9 @@ spec:
                 configMapKeyRef:
                   name: forum-conf
                   key: mariadb.password
+          resources:
+            requests:
+              cpu: 50m
         - image: gcr.io/goonswarm-1303/phpbb3
           imagePullPolicy: Always
           name: phpbb3
@@ -40,6 +36,9 @@ spec:
           volumeMounts:
             - name: phpbb-storage
               mountPath: /var/www/html
+          resources:
+            requests:
+              cpu: 50m
       volumes:
         - name: mariadb-storage
           gcePersistentDisk:

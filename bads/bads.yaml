@@ -20,3 +20,6 @@ spec:
                 configMapKeyRef:
                   name: bads-config
                   key: mariadb.password
+          resources:
+            requests:
+              cpu: 50m

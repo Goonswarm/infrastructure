@@ -30,6 +30,9 @@ spec:
           volumeMounts:
             - name: murmur-config
               mountPath: /etc/murmur
+          resources:
+            requests:
+              cpu: 50m
       volumes:
         - name: murmur-certs
           secret:

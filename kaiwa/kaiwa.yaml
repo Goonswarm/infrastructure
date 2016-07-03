@@ -24,3 +24,6 @@ spec:
                   key: secret
           ports:
             - containerPort: 8000
+          resources:
+            requests:
+              cpu: 50m
