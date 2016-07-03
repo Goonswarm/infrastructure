@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: bads
+  name: goon-ldap
 spec:
   replicas: 1
   template:
@@ -19,8 +19,11 @@ spec:
           volumeMounts:
             - name: slapd-storage
               mountPath: /var/lib/openldap/openldap-data
+          resources:
+            requests:
+              cpu: 50m
       volumes:
         - name: slapd-storage
           gcePersistentDisk:
-            pdName: ldap-storage
+            pdName: slapd-storage
             fsType: ext4
