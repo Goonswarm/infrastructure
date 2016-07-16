@@ -219,7 +219,7 @@ access:
   ## Maximum number of offline messages that users can have:
   max_user_offline_messages:
     admin: 5000
-    all: 100
+    all: 300
   ## This rule allows access only for local users:
   local:
     local: allow
@@ -327,9 +327,10 @@ modules:
     access_create: muc_create
     access_persistent: muc_create
     access_admin: muc_admin
-    max_users: 250
+    max_users: 400
+    history_size: 150
     # e.g. 10 channels on 4 devices
-    max_user_conferences: 40
+    max_user_conferences: 50
   mod_mam:
     db_type: mnesia
     default: roster
