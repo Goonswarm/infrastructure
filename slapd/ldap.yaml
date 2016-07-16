@@ -25,5 +25,5 @@ spec:
       volumes:
         - name: slapd-storage
           gcePersistentDisk:
-            pdName: slapd-storage
+            pdName: slapd-restored
             fsType: ext4
