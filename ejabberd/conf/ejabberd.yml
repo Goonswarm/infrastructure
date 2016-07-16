@@ -93,7 +93,7 @@ listen:
     port: 5222
     ip: "::"
     module: ejabberd_c2s
-    certfile: "/etc/ssl/ejabberd/combined.pem"
+    certfile: "/tmp/ejabberd.pem"
     starttls: true
     protocol_options:
       - "no_sslv3"
@@ -114,7 +114,7 @@ listen:
     ip: "::"
     default_host: "conference.tendollarbond.com"
     tls: true
-    certfile: "/etc/ssl/ejabberd/combined.pem"
+    certfile: "/tmp/ejabberd.pem"
     request_handlers:
       "/websocket": ejabberd_http_ws
     web_admin: true
@@ -130,7 +130,7 @@ listen:
         - send_message
 
 s2s_use_starttls: required
-s2s_certfile: "/etc/ssl/ejabberd/combined.pem"
+s2s_certfile: "/tmp/ejabberd.pem"
 s2s_protocol_options:
   - "no_sslv3"
 
