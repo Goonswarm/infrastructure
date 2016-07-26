@@ -15,8 +15,6 @@ spec:
           imagePullPolicy: Always
           name: kaiwa
           env:
-            - name: NODE_ENV
-              value: dev
             - name: KAIWA_SECRET
               valueFrom:
                 configMapKeyRef:
