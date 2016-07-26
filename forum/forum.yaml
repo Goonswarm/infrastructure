@@ -42,9 +42,9 @@ spec:
       volumes:
         - name: mariadb-storage
           gcePersistentDisk:
-            pdName: mariadb-restored
+            pdName: mariadb-storage
             fsType: ext4
         - name: phpbb-storage
           gcePersistentDisk:
-            pdName: phpbb-restored
+            pdName: phpbb-storage
             fsType: ext4
