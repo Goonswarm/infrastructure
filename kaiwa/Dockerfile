@@ -1,9 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER tazjin
 
-# For some stupid reason Kaiwa's dependencies are broken in prod mode.
-# Web developers v0v
-ENV NODE_ENV dev
 EXPOSE 8000
 
 # Fetch Kaiwa's dependencies
@@ -16,6 +13,7 @@ RUN git clone https://github.com/digicoop/kaiwa.git /opt/kaiwa && \
 WORKDIR /opt/kaiwa
 RUN npm install
 
-ADD config.json /opt/kaiwa/dev_config.json
+ADD config.json /opt/kaiwa/prod_config.json
 
-CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" dev_config.json && node server
+ENV NODE_ENV prod
+CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" prod_config.json && node server
