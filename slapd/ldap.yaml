@@ -22,8 +22,10 @@ spec:
           resources:
             requests:
               cpu: 50m
+            limits:
+              memory: 500Mi
       volumes:
         - name: slapd-storage
           gcePersistentDisk:
-            pdName: slapd-restored
+            pdName: slapd-storage
             fsType: ext4
