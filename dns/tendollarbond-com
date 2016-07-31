@@ -17,7 +17,7 @@ forums 300 IN CNAME nginx.svc.tendollarbond.com.
 www 300 IN CNAME nginx.svc.tendollarbond.com.
 chat 300 IN CNAME nginx.svc.tendollarbond.com.
 recon 300 IN CNAME nginx.svc.tendollarbond.com.
-rocket 300 IN CNAME nginx.svc.tendollarbond.com.
+wiki 300 IN CNAME nginx.svc.tendollarbond.com.
 mumble 300 IN A 104.196.1.43
 
 ;; Zone delegations
