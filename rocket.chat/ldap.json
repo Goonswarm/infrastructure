@@ -1,6 +1,0 @@
-{
-  "filter": "(&(pilotActive=true)(|(cn=#{username})(sn=#{username})))",
-  "scope": "sub",
-  "userDN": "cn=ejabberd,ou=users,dc=tendollarbond,dc=com",
-  "password": "TrumpForPresident2016"
-}
