@@ -10,8 +10,16 @@ spec:
         app: gitit
     spec:
       containers:
-        - image: gcr.io/goonswarm-1303/gitit:ef8cb17
+        - image: gcr.io/goonswarm-1303/gitit:56d3472
           name: gitit
           resources:
             requests:
               cpu: 30m
+          volumeMounts:
+            - name: gitit-storage
+              mountPath: /var/lib/gitit
+      volumes:
+        - name: gitit-storage
+          gcePersistentDisk:
+            pdName: gitit-storage
+            fsType: ext4
