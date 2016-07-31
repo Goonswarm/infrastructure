@@ -10,7 +10,7 @@ spec:
         app: gitit
     spec:
       containers:
-        - image: gcr.io/goonswarm-1303/gitit:8d01027
+        - image: gcr.io/goonswarm-1303/gitit:ef8cb17
           name: gitit
           resources:
             requests:
