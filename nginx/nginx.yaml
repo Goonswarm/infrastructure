@@ -15,8 +15,8 @@ spec:
         - image: nginx:1.9.12
           name: nginx
           volumeMounts:
-            - name: rocket-tendollarbond-com-tls
-              mountPath: /etc/nginx/ssl/rocket.tendollarbond.com
+            - name: wiki-tendollarbond-com-tls
+              mountPath: /etc/nginx/ssl/wiki.tendollarbond.com
             - name: k8s-tendollarbond-com-tls
               mountPath: /etc/nginx/ssl/k8s.tendollarbond.com
             - name: tendollarbond-com-tls
@@ -49,9 +49,9 @@ spec:
         - name: k8s-tendollarbond-com-tls
           secret:
             secretName: k8s-tendollarbond-com-tls
-        - name: rocket-tendollarbond-com-tls
+        - name: wiki-tendollarbond-com-tls
           secret:
-            secretName: rocket-tendollarbond-com-tls
+            secretName: wiki-tendollarbond-com-tls
         - name: tendollarbond-com-tls
           secret:
             secretName: tendollarbond-com-tls
