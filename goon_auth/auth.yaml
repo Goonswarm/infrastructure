@@ -11,7 +11,7 @@ spec:
         app: goon-auth
     spec:
       containers:
-        - image: gcr.io/goonswarm-1303/goon-auth:b8e3a4e
+        - image: gcr.io/goonswarm-1303/goon-auth:37cc2cd
           imagePullPolicy: Always
           name: goon-auth
           ports:

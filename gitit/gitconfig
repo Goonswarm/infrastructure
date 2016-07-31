@@ -1,3 +1,5 @@
 [user]
 	email = wiki@tendollarbond.com
 	name = GoonWiki
+[push]
+	default = simple
