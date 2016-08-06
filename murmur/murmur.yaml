@@ -23,7 +23,7 @@ spec:
               mountPath: /etc/murmur
           ports:
             - containerPort: 64738
-        - image: gcr.io/goonswarm-1303/murmur-ldap
+        - image: gcr.io/goonswarm-1303/murmur-ldap:e077831
           name: murmur-ldap
           args:
             - /etc/murmur/murmur-ldap.conf
