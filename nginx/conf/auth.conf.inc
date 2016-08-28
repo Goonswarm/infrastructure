@@ -8,14 +8,14 @@ location /login {
 
 # Proxy authentication requests to GoonAuth, take second URI segment as group
 # to be checked.
-location ~^/auth_proxy/(?<group>.+)?$ {
+location ~^/auth_proxy/(?<groups>.+)?$ {
     internal;
     rewrite (.*) "/auth" break;
     proxy_pass http://goon-auth:4000;
     proxy_pass_request_body off;
     proxy_set_header Content-length "";
     proxy_set_header X-Target "";
-    proxy_set_header X-Access-Group $group;
+    proxy_set_header X-Access-Groups $groups;
 
     # Cache authentication results for 5 minutes
     proxy_ignore_headers Set-Cookie;
