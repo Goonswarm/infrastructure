@@ -1,19 +1,19 @@
-FROM ubuntu:16.04
-MAINTAINER tazjin
+FROM node:6.5.0
+MAINTAINER reluctant tazjin
 
 EXPOSE 8000
 
-# Fetch Kaiwa's dependencies
-RUN apt-get update
-RUN apt-get install -y uuid-dev npm nodejs git
-
 # Fetch Kaiwa
-RUN git clone https://github.com/digicoop/kaiwa.git /opt/kaiwa && \
+RUN git clone https://github.com/ForNeVeR/kaiwa.git /opt/kaiwa --single-branch --branch master && \
     ln -s /usr/bin/nodejs /usr/bin/node
 WORKDIR /opt/kaiwa
 RUN npm install
 
-ADD config.json /opt/kaiwa/prod_config.json
+# Bake config into static files
+ADD config.json /opt/kaiwa/dev_config.json
+RUN npm run compile
 
+
+# Run in production mode (whatever that means)
 ENV NODE_ENV prod
-CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" prod_config.json && node server
+CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" prod_config.json && npm start

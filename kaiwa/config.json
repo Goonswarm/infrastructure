@@ -1,7 +1,7 @@
 {
     "isDev": false,
     "http": {
-        "host": "0.0.0.0",
+        "baseUrl": "https://chat.tendollarbond.com",
         "port": 8000
     },
     "session": {
@@ -11,6 +11,7 @@
         "name": "TenDollarBond",
         "domain": "tendollarbond.com",
         "wss": "wss://conference.tendollarbond.com/websocket",
+        "securePasswordStorage": true,
         "startup": "groupchat/space_gbs%40conference.tendollarbond.com",
         "muc": "conference.tendollarbond.com",
         "admin": "vincent_claeson"
