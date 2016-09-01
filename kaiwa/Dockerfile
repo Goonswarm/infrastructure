@@ -13,7 +13,6 @@ RUN npm install
 ADD config.json /opt/kaiwa/dev_config.json
 RUN npm run compile
 
-
 # Run in production mode (whatever that means)
 ENV NODE_ENV prod
-CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" prod_config.json && npm start
+CMD sed -i "s/REPLACE_ME/${KAIWA_SECRET}/g" dev_config.json && npm start
